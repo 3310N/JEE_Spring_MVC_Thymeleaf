@@ -10,9 +10,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-@Entity
+@Entity // pour dire que c'est une entité
 
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data // pour générer les getters et setters
+@NoArgsConstructor // pour générer le constructeur sans argument
+@AllArgsConstructor // pour générer le constructeur avec tous les arguments
+@Builder // pour générer le design pattern builder
 
 public class Patient {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

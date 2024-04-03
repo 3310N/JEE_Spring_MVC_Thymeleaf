@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestPart;
 
 import java.util.List;
 
-@Controller
-@AllArgsConstructor
+@Controller // pour dire que c'est un controller
+@AllArgsConstructor // pour générer le constructeur avec tous les arguments
 
 public class PatientController {
     private PatientRepository patientRepository;
-    @GetMapping("/index")
+    @GetMapping("/index") // pour dire que c'est une méthode qui répond à une requête GET
     public String index(Model model, @RequestParam(name = "page" , defaultValue="0") int p , @RequestParam(name="size" , defaultValue = "5") int s,  @RequestParam(name="Keyword" , defaultValue = "")  String kw){
        Page <Patient> pagePatients  = patientRepository.findByNomContains(kw, PageRequest.of(p,s));
         model.addAttribute("ListPatients", pagePatients.getContent());
@@ -33,5 +33,9 @@ public class PatientController {
     public String delete(Long id , String Keyword, int page){
         patientRepository.deleteById(id);
         return "redirect:/index?page="+page+"&Keyword="+Keyword;
+    }
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/index";
     }
 }

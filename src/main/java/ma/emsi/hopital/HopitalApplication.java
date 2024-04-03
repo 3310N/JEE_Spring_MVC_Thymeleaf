@@ -11,7 +11,7 @@ import java.util.Date;
 
 @SpringBootApplication
 public class HopitalApplication implements CommandLineRunner {
- @Autowired
+    @Autowired // pour injecter une dépendance
     private PatientRepository patientRepository;
 
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class HopitalApplication implements CommandLineRunner {
 
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         patientRepository.save(new Patient(null, "EL Mahdi", new Date(), false, 55));
         patientRepository.save(new Patient(null, "Youssef", new Date(), false, 10));
